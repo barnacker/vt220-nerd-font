@@ -5,10 +5,13 @@
 rebuilt from the DEC VT220 ROM bitmap with the original CRT scanline/phosphor
 render baked into every glyph.
 
-This is the **Mono** variant: every glyph — text *and* icon — is exactly one
-500-unit cell wide, for strict grid alignment in terminals and editors.
+This is the **Mono** variant: every text glyph is exactly one 500-unit cell
+wide (strict grid licensing). Icons are scaled to **cap-height 650** (matching
+A–Z) and left-anchored at 1-cell advance for clean icon-column alignment.
 
 ## Installation
+
+Install **`build/VT220_NFM.ttf`** (the shipping artifact):
 
 - **macOS**: double-click the TTF in `build/`, Font Book installs it.
 - **Windows**: right-click the TTF → *Install for all users* (or copy to
@@ -33,6 +36,11 @@ Codicons, Octicons, Material Design, Weather). The original 329 characters
 (Cyrillic included) are present **with byte-identical outlines** — the scanline
 effect is a property of the original glyph outlines and is untouched by the
 patch.
+
+*Icon post-processing*: after the patcher, Nerd glyphs (0xE000–0xF1AF) are
+uniformly scaled to cap-height 650 and re-anchored to the baseline (y=50),
+then left-anchored with a 1-cell (500) advance. This is what makes the
+"strict mono" promise hold across both text and icons.
 
 ## Licensing
 
